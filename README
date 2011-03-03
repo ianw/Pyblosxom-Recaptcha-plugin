@@ -1,0 +1,34 @@
+Recaptcha plugin for Pyblosxom
+==============================
+
+To use this plugin
+
+0) put the plugin your plugin directory
+
+1) sign up for a key at http://www.google.com/recaptcha
+
+2) put that key in config.py
+ 
+ py['recaptcha_api_key'] = "..."
+
+3) add the html for the Recaptcha plugin to the comment-form.html
+   template.  Currently that looks something like
+
+ <script type="text/javascript"
+  src="http://api.recaptcha.net/challenge?k=...">
+ </script>
+ <noscript>
+   <iframe src="http://api.recaptcha.net/noscript?k=..."
+    height="300" width="500" frameborder="0"></iframe><br>
+    <textarea name="recaptcha_challenge_field" rows="3" cols="40"></textarea>
+            <input type="hidden" name="recaptcha_response_field" 
+                   value="manual_challenge">
+ </noscript>
+
+4) remember to add the plugin to py['load_plugins'] if you have that
+   set (i.e. don't just import all plugins)
+
+TODO
+ - failure for a well-meaning human is not very nice, Pyblosxom should
+   remember the form values and re-populate them so they can easily
+   try again.
