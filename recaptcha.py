@@ -87,5 +87,4 @@ def cb_comment_reject(args):
 
     return False
 
-# akismet can handle trackback spam too
 cb_trackback_reject = cb_comment_reject
